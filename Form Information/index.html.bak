@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="form.css" rel="stylesheet" />
+		<title>Form information</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Form Information</h1>
+            </div>
+            <form class="form">
+                <div class="form-control">
+                    <lable for="firstname" name="firstname">First Name</lable>
+                    <input id="fname" type="text" name="firstname" aria-label="First Name" autocomplete="given-name" /><br>
+                    <span></span><br>
+                </div><br>
+				<div class="form-control">
+                    <lable for="lastname" name="lastname">Last Name</lable>
+                    <input id="lname" type="text" name="lastname" /><br>
+                    <span></span><br>
+                </div><br>
+                <div class="form-control">
+                    <lable for="email" name="email">Email</lable><br>
+                    <input id="Email" type="email" name="email" /><br>
+                    <span></span><br>
+                </div><br>
+                <div class="form-control">
+                    <lable for="phone" name="phone">Phone Number</lable>
+                    <input id="Phone" type="tel" name="phone" maxlength="10"/><br>
+                    <span></span><br>
+                </div><br>
+                <div class="form-control">
+                    <button>Submit</button>
+                </div>
+            </form>
+        </div>
+        <script src="form.js"></script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+let FirstName=document.getElementById("fname");
+let LastName=document.getElementById("lname");
+let email=document.getElementById("Email");
+let phone=document.getElementById("Phone");
+let form=document.querySelector("form");
+
+console.log(email,FirstName,LastName,phone);
+
+function validateInput(){
+    if(FirstName.value.trim()===""){
+       onError(FirstName,"First Name cannot be empty");
+    }else{
+        onSuccess(FirstName);
+    }
+	if(LastName.value.trim()===""){
+       onError(LastName,"Last Name cannot be empty");
+    }else{
+        onSuccess(LastName);
+    }
+    if(email.value.trim()===""){
+        onError(email,"Email cannot be empty");
+    }else{
+        if(!isValidEmail(email.value.trim())){
+            onError(email,"Email is not valid");
+        }else{
+            onSuccess(email);
+        }
+    }
+    if(phone.value.trim()===""){
+        onError(phone,"Phone number cannot be empty");
+     }else{
+         onSuccess(phone);
+     }
+}
+
+document.querySelector("button")
+.addEventListener("click",(event)=>{
+    event.preventDefault();
+    validateInput();
+});
+
+function onSuccess(input){
+    let parent=input.parentElement;
+    let messageEle=parent.querySelector("span");
+    messageEle.style.visibility="hidden";  
+}
+function onError(input,message){
+    let parent=input.parentElement;
+    let messageEle=parent.querySelector("span");
+    messageEle.style.visibility="visible";
+    messageEle.innerText=message;  
+}
+
+function isValidEmail(email){
+   return ^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$
+}
+
+
+
+
+
+
+
+
+///^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+

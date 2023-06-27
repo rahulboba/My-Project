@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="form.css" rel="stylesheet" />
+		<title>Form information</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Form Information</h1>
+            </div>
+            <form class="form">
+                <div class="form-control">
+                    <lable for="firstname" name="firstname">First Name</lable><br>
+                    <input id="fname" type="text" name="firstname" aria-label="First Name" autocomplete="given-name" aria-required="true" aria-describedby="firstname"/><br>
+                    <span id="firstname" role="alert"></span><br>
+                </div><br>
+				<div class="form-control">
+                    <lable for="lastname" name="lastname">Last Name</lable><br>
+                    <input id="lname" type="text" name="lastname" aria-label="Last Name" autocomplete="family-name" aria-required="true" aria-describedby="lastname"/><br>
+                    <span id="lastname" role="alert"></span><br>
+                </div><br>
+                <div class="form-control">
+                    <lable for="email" name="email">Email</lable><br>
+                    <input id="Email" type="text" name="email" aria-label="Email Address" autocomplete="off" aria-required="true" aria-describedby="emailadd"/><br>
+                    <span id="emailadd" role="alert"></span><br>
+                </div><br>
+                <div class="form-control">
+                    <lable for="phone" name="phone">Phone Number</lable><br>
+                    <input id="Phone" type="tel" name="phone" maxlength="10" aria-label="Phone number" autocomplete="phone number" aria-required="true" aria-describedby="phoneno"/><br>
+                    <span id="phoneno" role="alert"></span><br>
+                </div><br>
+                <div class="form-control">
+                    <lable for="url">URL Link</lable><br>
+                    <input type="url" name="url" id="URL" placeholder="https://example.com" pattern="https://.*" size="30" aria-label="url" autocomplete="url" aria-required="true" aria-describedby="url"/><br>
+                    <span id="url" role="alert"></span><br>
+                </div><br>
+                <div class="form-control">
+                    <button>Submit</button>
+                </div> 
+            </form>
+        </div>
+        <script src="form.js"></script>
+    </body>
+</html>
