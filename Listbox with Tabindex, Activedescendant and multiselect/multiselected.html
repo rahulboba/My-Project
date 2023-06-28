@@ -4,14 +4,14 @@
     <title>listbox</title>
 </head>
 <style>
-    .listbox-item[aria-selected="true"] {
+    .listbox-item-1[aria-selected="true"] {
         background-color: #ddd;
         border-color: rgb(0, 0, 0);
         border-width: 2px;
         border-style: solid;
         width: 10cm;
     }
-    .listbox-item {
+    .listbox-item-1 {
         padding: 10px;
     }
     .listbox :focus {
@@ -24,40 +24,35 @@
 <body>
     <div class="multiselected">
         <h2>Listbox with Activedescendant</h2>
-        <label for="listbox" id="listbox-label"><b>Add User:</b></label><br>
+        <label for="listbox" id="listbox-label-1"><b>Add User:</b></label><br>
         <div class="main-content">
-            <div class="listbox" role="listbox" aria-labelledby="states" aria-activedescendant="">
-                <div id="state1" class="listbox-item" role="option" aria-selected="false" tabindex="0">Rahul.B</div>
-
-                <div id="state2" class="listbox-item" role="option" aria-selected="false" tabindex="0">Anant.P</div>
-
-                <div id="state3" class="listbox-item" role="option" aria-selected="false" tabindex="0">Suraj.P</div>
-
-                <div id="state4" class="listbox-item" role="option" aria-selected="false" tabindex="0">Madhav.S</div>
-
-                <div id="state5" class="listbox-item" role="option" aria-selected="false" tabindex="0">Gaurav.A</div>
-
-                <div id="state6" class="listbox-item" role="option" aria-selected="false" tabindex="0">Krushana.K</div>
+            <div class="listbox1" role="listbox-1" aria-labelledby="states" aria-activedescendant="">
+                <div id="state1" class="listbox-item-1" role="option" aria-selected="false" >Rahul.B</div>
+                <div id="state2" class="listbox-item-1" role="option" aria-selected="false" >Anant.P</div>
+                <div id="state3" class="listbox-item-1" role="option" aria-selected="false" >Suraj.P</div>
+                <div id="state4" class="listbox-item-1" role="option" aria-selected="false" >Madhav.S</div>
+                <div id="state5" class="listbox-item-1" role="option" aria-selected="false" >Gaurav.A</div>
+                <div id="state6" class="listbox-item-1" role="option" aria-selected="false" >Krushana.K</div>
             </div>
         </div>
     </div>
     <script>
-        let listbox = document.querySelector('.listbox');
-        let items = Array.from(listbox.children);
-        listbox.setAttribute('role', 'listbox');
-        listbox.setAttribute('tabindex', '0');
-        listbox.setAttribute('aria-labelledby', 'listbox-label');
+        let Listbox = document.querySelector('.listbox1');
+        let Items = Array.from(Listbox.children);
+        Listbox.setAttribute('role', 'listbox-1');
+        Listbox.setAttribute('tabindex', '0');
+        Listbox.setAttribute('aria-labelledby', 'listbox-label');
 
-        listbox.addEventListener('keydown', e => {
-        let currentIndex = items.findIndex(item => item === document.activeElement);
+        Listbox.addEventListener('keydown', e => {
+        let currentIndex = Items.findIndex(Item => Item === document.activeElement);
 
         if (e.key === 'ArrowUp' && currentIndex > 0) {
             e.preventDefault();
-            items[currentIndex - 1].focus();
+            Items[currentIndex - 1].focus();
         }
-        if (e.key === 'ArrowDown' && currentIndex < items.length - 1) {
+        if (e.key === 'ArrowDown' && currentIndex < Items.length - 1) {
             e.preventDefault();
-            items[currentIndex + 1].focus();
+            Items[currentIndex + 1].focus();
         }
         if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
@@ -65,9 +60,9 @@
         }
         });
 
-        listbox.addEventListener('click', e => {
+        Listbox.addEventListener('click', e => {
         let clickedItem = e.target;
-        if (clickedItem.classList.contains('listbox-item')) {
+        if (clickedItem.classList.contains('listbox-item-1')) {
             toggleSelection(clickedItem);
         }
         });

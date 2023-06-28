@@ -61,3 +61,42 @@ function setActiveItem(item) {
 }
 
 // Multiselected
+        let Listbox = document.querySelector('.listbox1');
+        let Items = Array.from(Listbox.children);
+        Listbox.setAttribute('role', 'listbox-1');
+        Listbox.setAttribute('tabindex', '0');
+        Listbox.setAttribute('aria-labelledby', 'listbox-label');
+
+        Listbox.addEventListener('keydown', e => {
+        let index1 = Items.findIndex(Item => Item === document.activeElement);
+
+        if (e.key === 'ArrowUp' && index > 0) {
+            e.preventDefault();
+            Items[index1 - 1].focus();
+        }
+        if (e.key === 'ArrowDown' && index < Items.length - 1) {
+            e.preventDefault();
+            Items[index1 + 1].focus();
+        }
+        if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            toggleSelection(document.activeElement);
+        }
+        });
+
+        Listbox.addEventListener('click', e => {
+        let clickedItem = e.target;
+        if (clickedItem.classList.contains('listbox-item-1')) {
+            toggleSelection(clickedItem);
+        }
+        });
+
+        function toggleSelection(item) {
+        let isSelected = item.getAttribute('aria-selected') === 'true';
+
+        if (isSelected) {
+            item.setAttribute('aria-selected', 'false');
+        } else {
+            item.setAttribute('aria-selected', 'true');
+        }
+        }

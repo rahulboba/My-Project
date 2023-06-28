@@ -11,36 +11,74 @@
     .listbox-item{
         padding: 10px;
     }
+
+    .listbox-item-1[aria-selected="true"] {
+        background-color: #ddd;
+        border-color: rgb(0, 0, 0);
+        border-width: 2px;
+        border-style: solid;
+        width: 10cm;
+    }
+    .listbox-item-1 {
+        padding: 10px;
+    }
+    .listbox :focus {
+        width: 5cm;
+    }
+    .main-content :focus{
+        width: 10cm;
+    }
+    [role="option"]{
+        padding: 10px;
+    }
+
 </style>
 <body>
-    <div class="tabindex">
-        <h2>Listbox with Tabindex</h2>
-        <div class="main content">
-            <label for="listbox" id="listbox-label"><b>State of India:</b></label>
-            <div role="listbox" aria-labelledby="state">
-                <div class="listitem">
-                    <div role="option" aria-selected="true" tabindex="0">Arunachal Pradesh</div>
-                    <div role="option" tabindex="-1">Bihar</div>
-                    <div role="option" tabindex="-1">Chhatisgarh</div>
-                    <div role="option" tabindex="-1">Goa</div>
-                    <div role="option" tabindex="-1">Haryana</div>
-                    <div role="option" tabindex="-1">Karnataka</div>
-                    <div role="option" tabindex="-1">Maharashtra</div>
+    <div class="all-main-content">
+        <div class="tabindex">
+            <h2>Listbox with Tabindex</h2>
+            <div class="main content">
+                <label for="listbox" id="listbox-label"><b>State of India:</b></label>
+                <div role="listbox" aria-labelledby="state">
+                    <div class="listitem">
+                        <div role="option" aria-selected="true" tabindex="0">Arunachal Pradesh</div>
+                        <div role="option" tabindex="-1">Bihar</div>
+                        <div role="option" tabindex="-1">Chhatisgarh</div>
+                        <div role="option" tabindex="-1">Goa</div>
+                        <div role="option" tabindex="-1">Haryana</div>
+                        <div role="option" tabindex="-1">Karnataka</div>
+                        <div role="option" tabindex="-1">Maharashtra</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="aria-activedescendant">
-        <h2>Listbox with Activedescendant</h2>
-        <div class="main content">
-            <label for="listbox" id="listbox-label"><b>State of India:</b></label><br>
-            <div class="listbox" role="listbox" aria-labelledby="states" aria-activedescendant="state1">
-                <div id="state1" class="listbox-item" role="option" aria-selected="true">Arunachal Pradesh</div>
-                <div id="state2" class="listbox-item" role="option">Bangalore</div>
-                <div id="state3" class="listbox-item" role="option">Chhattisgarh</div>
-                <div id="state4" class="listbox-item" role="option">Jharkhand</div>
-                <div id="state5" class="listbox-item" role="option">Maharashtra</div>
-                <div id="state6" class="listbox-item" role="option">Uttar Pradesh</div>
+        <div class="aria-activedescendant">
+            <h2>Listbox with Activedescendant</h2>
+            <div class="main content">
+                <label for="listbox" id="listbox-label"><b>State of India:</b></label><br>
+                <div class="listbox" role="listbox" aria-labelledby="states" aria-activedescendant="state1">
+                    <div id="state1" class="listbox-item" role="option" aria-selected="true">Arunachal Pradesh</div>
+                    <div id="state2" class="listbox-item" role="option">Bangalore</div>
+                    <div id="state3" class="listbox-item" role="option">Chhattisgarh</div>
+                    <div id="state4" class="listbox-item" role="option">Jharkhand</div>
+                    <div id="state5" class="listbox-item" role="option">Maharashtra</div>
+                    <div id="state6" class="listbox-item" role="option">Uttar Pradesh</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="multiselected">
+            <h2>Listbox with Activedescendant</h2>
+            <label for="listbox" id="listbox-label-1"><b>Add User:</b></label><br>
+            <div class="main-content">
+                <div class="listbox1" role="listbox-1" aria-labelledby="states" aria-activedescendant="">
+                    <div id="state1" class="listbox-item-1" role="option" aria-selected="false" tabindex="0">Rahul.B</div>
+                    <div id="state2" class="listbox-item-1" role="option" aria-selected="false" tabindex="0">Anant.P</div>
+                    <div id="state3" class="listbox-item-1" role="option" aria-selected="false" tabindex="0">Suraj.P</div>
+                    <div id="state4" class="listbox-item-1" role="option" aria-selected="false" tabindex="0">Madhav.S</div>
+                    <div id="state5" class="listbox-item-1" role="option" aria-selected="false" tabindex="0">Gaurav.A</div>
+                    <div id="state6" class="listbox-item-1" role="option" aria-selected="false" tabindex="0">Krushana.K</div>
+                </div>
             </div>
         </div>
     </div>
