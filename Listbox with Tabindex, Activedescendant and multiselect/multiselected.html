@@ -1,86 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>listbox</title>
 </head>
 <style>
     .listbox-item[aria-selected="true"] {
+        border: 2px solid #000;
+    }
+
+    .listbox-item[aria-selected="true"] {
         background-color: #ddd;
         border-color: rgb(0, 0, 0);
         border-width: 2px;
         border-style: solid;
-        width: 10cm;
+        
     }
-    .listbox-item {
+    
+     .listbox-itemM[aria-selected="true"] {
+        border: 2px solid #000;
+    }
+
+    .listbox-itemM[aria-selected="true"] {
+        background-color: #ddd;
+        border-color: rgb(0, 0, 0);
+        border-width: 2px;
+        border-style: solid;
+        
+    }
+    /* .listbox-item[aria-selected="true"] {
+        border: 2px solid #000;
+    } */
+    .listbox-item{
+        padding: 5px;
+    }
+    .listbox-item-1 {
         padding: 10px;
     }
-    .listbox :focus {
-        width: 5cm;
+    .list{
+        padding: 5px;
     }
-    .main-content :focus{
-        width: 10cm;
-    }
+
+
 </style>
 <body>
-    <div class="multiselected">
-        <h2>Listbox with Activedescendant</h2>
-        <label for="listbox" id="listbox-label"><b>Add User:</b></label><br>
-        <div class="main-content">
-            <div class="listbox" role="listbox" aria-labelledby="states" aria-activedescendant="">
-                <div id="state1" class="listbox-item" role="option" aria-selected="false" tabindex="0">Rahul.B</div>
-
-                <div id="state2" class="listbox-item" role="option" aria-selected="false" tabindex="0">Anant.P</div>
-
-                <div id="state3" class="listbox-item" role="option" aria-selected="false" tabindex="0">Suraj.P</div>
-
-                <div id="state4" class="listbox-item" role="option" aria-selected="false" tabindex="0">Madhav.S</div>
-
-                <div id="state5" class="listbox-item" role="option" aria-selected="false" tabindex="0">Gaurav.A</div>
-
-                <div id="state6" class="listbox-item" role="option" aria-selected="false" tabindex="0">Krushana.K</div>
+        <div class="tabindex">
+          <h2>Listbox with Tabindex</h2>
+          <div class="main content">
+            <span id="state"><b>State of India:</b></span>
+            <div role="listbox" aria-labelledby="state">
+              <div class="listitem" aria-labelledby="state" id="stategroup">
+                <option id="stategroup" class="list" aria-selected="true" tabindex="0">Arunachal Pradesh</option>
+                <option id="stategroup" class="list" tabindex="-1">Bihar</option>
+                <option id="stategroup" class="list" tabindex="-1">Chhatisgarh</option>
+                <option id="stategroup" class="list" tabindex="-1">Goa</option>
+                <option id="stategroup" class="list" tabindex="-1">Haryana</option>
+                <option id="stategroup" class="list" tabindex="-1">Karnataka</option>
+                <option id="stategroup" class="list" tabindex="-1">Maharashtra</option>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="aria-activedescendant">
+            <h2>Listbox with Activedescendant</h2>
+            <div class="main content">
+                <label for="listbox" id="listbox-label"><b>State of India:</b></label><br>
+                <div class="listbox" role="listbox" aria-labelledby="listbox-label-1" aria-activedescendant="state1">
+                    <div id="state1" class="listbox-item" role="option" aria-selected="true">Arunachal Pradesh</div>
+                    <div id="state2" class="listbox-item" role="option">Bangalore</div>
+                    <div id="state3" class="listbox-item" role="option">Chhattisgarh</div>
+                    <div id="state4" class="listbox-item" role="option">Jharkhand</div>
+                    <div id="state5" class="listbox-item" role="option">Maharashtra</div>
+                    <div id="state6" class="listbox-item" role="option">Uttar Pradesh</div>
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="multiselected">
+            <h2>aria-activedescendant multiselected example</h2>
+            <div class="main-content">
+                <label for="listbox" id="listbox-label-M"><b>State aria-activedescendant Multiselect:</b></label>
+                  <br><br>
+                    <div class="listboxM" role="listbox-M" id="multiple" aria-labelledby="listbox-label" aria-activedescendant="" tabindex="0">
+                        <div id="Rahul" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Rahul.B</div>
+                        <div id="Suraj" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Suraj.P</div>
+                        <div id="Anant" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Anant.P</div>
+                        <div id="Madhav" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Madhav.S</div>
+                        <div id="Gaurav" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Gaurav.A</div>
+                        <div id="krishan" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Krushan.K</div>
+                    </div>
+            </div>
+        </div>
     <script>
-        let listbox = document.querySelector('.listbox');
-        let items = Array.from(listbox.children);
-        listbox.setAttribute('role', 'listbox');
-        listbox.setAttribute('tabindex', '0');
-        listbox.setAttribute('aria-labelledby', 'listbox-label');
+        document.addEventListener("DOMContentLoaded", rovingtabindex(), activedescendant(), Multiselectactivedescendant())
 
-        listbox.addEventListener('keydown', e => {
-        let currentIndex = items.findIndex(item => item === document.activeElement);
+// Roving TabIndex
 
-        if (e.key === 'ArrowUp' && currentIndex > 0) {
-            e.preventDefault();
-            items[currentIndex - 1].focus();
-        }
-        if (e.key === 'ArrowDown' && currentIndex < items.length - 1) {
-            e.preventDefault();
-            items[currentIndex + 1].focus();
-        }
-        if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            toggleSelection(document.activeElement);
-        }
-        });
+function rovingtabindex() {
+  let stateitems = document.querySelectorAll('[id="stategroup"]');
+  stateitems.forEach((state) => {
+    state.addEventListener("keydown", navigation);
+  })
 
-        listbox.addEventListener('click', e => {
-        let clickedItem = e.target;
-        if (clickedItem.classList.contains('listbox-item')) {
-            toggleSelection(clickedItem);
-        }
-        });
+  function navigation(e) {
+    let target = e.target;
+    let nextTarget = target.nextElementSibling;
+    let currentTarget = e.target;
+    let prevTarget = target.previousElementSibling;
 
-        function toggleSelection(item) {
-        let isSelected = item.getAttribute('aria-selected') === 'true';
+    if (e.key === "ArrowDown") {
+      target.setAttribute("tabindex", "-1");
+      nextTarget.setAttribute("tabindex", "0");
+      nextTarget.focus();
+    }
+    if (e.key === "ArrowUp") {
+      target.setAttribute("tabindex", "-1");
+      prevTarget.setAttribute("tabindex", "0");
+      prevTarget.focus();
+    }
+  }
+}
 
-        if (isSelected) {
-            item.setAttribute('aria-selected', 'false');
-        } else {
-            item.setAttribute('aria-selected', 'true');
-        }
-        }
+// aria-activedescendant
+function activedescendant() {
+let listbox = document.querySelector('.listbox');  
+let items = Array.from(listbox.children);
+let activeItem = items.find(item => item.getAttribute('aria-selected') === 'true');
+listbox.setAttribute('tabindex', '0');
+listbox.addEventListener('keydown', e => {
+  let currentIndex1 = items.indexOf(activeItem);
+  if (e.key === 'ArrowUp' && currentIndex1 > 0) {
+    setActiveItem(items[currentIndex1 - 1]);
+  }
+  if (e.key === 'ArrowDown' && currentIndex1 < items.length - 1) {
+    setActiveItem(items[currentIndex1 + 1]);
+  }
+});
+
+listbox.addEventListener('click', e => {
+  let clickedItem = e.target;
+  if (clickedItem.classList.contains('listbox-item')) {
+    setActiveItem(clickedItem);
+  }
+});
+
+function setActiveItem(itemA) {
+  activeItem.removeAttribute('aria-selected');
+  activeItem.setAttribute('tabindex', '-1');
+  itemA.setAttribute('aria-selected', 'true');
+  itemA.removeAttribute('tabindex');
+  listbox.setAttribute('aria-activedescendant', itemA.id);
+  activeItem = itemA;
+}
+}
+
+// Multiselect
+function Multiselectactivedescendant() {
+let multiselectedlistbox = document.querySelector('.listboxM');
+let multiselecteditems = Array.from(multiselectedlistbox.children);
+  
+multiselectedlistbox.setAttribute('role', 'listboxM');
+multiselectedlistbox.setAttribute('tabindex', '0');
+multiselectedlistbox.setAttribute('aria-labelledby', 'listbox-label');
+
+  multiselectedlistbox.addEventListener('keydown', e => {
+    let currentIndexM = multiselecteditems.findIndex(itemM => itemM === document.activeElement);
+    if (e.key === 'ArrowUp' && currentIndexM > 0) {
+      multiselecteditems[currentIndexM - 1].focus();
+    }
+    if (e.key === 'ArrowDown' && currentIndexM < multiselecteditems.length - 1) {
+      multiselecteditems[currentIndexM + 1].focus();
+    }
+    if (e.key === ' ' || e.key === 'Enter') {
+      toggleSelection(document.activeElement);
+    }
+  });
+
+  multiselectedlistbox.addEventListener('click', e => {
+    let clickedItemM = e.target;
+    if (clickedItemM.classList.contains('listbox-itemM')) {
+      toggleSelection(clickedItemM);
+    }
+  });
+function toggleSelection(itemM) {
+  let isSelected = itemM.getAttribute('aria-selected') === 'true';
+  if (isSelected) {
+    itemM.setAttribute('aria-selected', 'false');
+  } else {
+    itemM.setAttribute('aria-selected', 'true');
+  }
+}
+}
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Listbox examples</title>
+<style>
+    .state-list [tabindex="0"]{
+    background-color: #ddd;
+    color: #000000;
+    font-weight: bold;
+    border: 0.5px solid #000000;    
+    }
+    .week-list [aria-selected="true"] {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    border: 0.5px solid #000000;
+  }
+
+  /* aria-activedescendant */
+  .listbox-item[aria-selected="true"] {
+    border: 0.5px solid #000000;
+    font-weight: bold;
+    background-color: #ddd;
+  }
+  
+  /* aria-activedescendant multiselected */
+  .listbox-itemM[aria-selected="true"] {
+        font-weight: bold;
+        background-color: #ddd;
+        border-color: rgb(0, 0, 0);
+        border-width: 2px;
+        border-style: solid;
+        
+    }
+
+</style>
+</head>
+<body>
+    <h1><b>ListBox Example</b></h1>
+  <div class="roving-tabindex">
+    Roving TabIndex
+    <h2>Roving tabindex example</h2>
+    <span id="state"><b>State of India</b></span>
+    <div role="listbox" aria-labelledby="state">
+      <br>
+      <div class="state-list" aria-labelledby="state">    
+        <div role="options" aria-selected="true" tabindex="0">Arunachal Pradesh</div>
+        <div role="options" aria-selected="false" tabindex="-1">Bihar</div>
+        <div role="options" aria-selected="false" tabindex="-1">Chhatisgarh</div>
+        <div role="options" aria-selected="false" tabindex="-1">Goa</div>
+        <div role="options" aria-selected="false" tabindex="-1">Haryana</div>
+        <div role="options" aria-selected="false" tabindex="-1">Karnataka</div>
+        <div role="options" aria-selected="false" tabindex="-1">Maharashtra</div>
+      </div>
+    </div>
+  </div>
+  
+  aria-activedescendant 
+  <div class="aria-activedescendant">
+    <h2>aria-activedescendant example</h2>
+    <div class="main content">
+      <label for="listbox" id="listbox-label"><b>State aria-activedescendant:</b></label>
+      <br>
+      <div class="listbox" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="state1">
+        <div id="state1" class="listbox-item" role="option" aria-selected="true">Arunachal Pradesh</div>
+        <div id="state2" class="listbox-item" role="option">Bihar</div>
+        <div id="state3" class="listbox-item" role="option">Chhatisgarh</div>
+        <div id="state4" class="listbox-item" role="option">Goa</div>
+        <div id="state5" class="listbox-item" role="option">Haryana</div>
+        <div id="state6" class="listbox-item" role="option">Karnataka</div>
+        <div id="state7" class="listbox-item" role="option">Maharashtra</div>
+      </div>
+    </div>
+  </div>
+
+  Multiselect 
+  <div class="multiselected">
+    <h2>aria-activedescendant multiselected example</h2>
+    <div class="main-content">
+        <label for="listbox" id="listbox-label-M"><b>State aria-activedescendant Multiselect:</b></label>
+          <br><br>
+            <div class="listboxM" role="listbox-M" aria-labelledby="listbox-label" aria-activedescendant="" tabindex="0">
+                <div id="Rahul" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Rahul.B</div>
+                <div id="Suraj" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Suraj.P</div>
+                <div id="Anant" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Anant.P</div>
+                <div id="Madhav" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Madhav.S</div>
+                <div id="Gaurav" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Gaurav.A</div>
+                <div id="krishan" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Krushan.K</div>
+            </div>
+    </div>
+</div>
+<script src="Listbox.js"></script>
+</body>
+</html> -->
