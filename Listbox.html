@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Listbox examples</title>
+<style>
+  /* Roving TabIndex */
+  .state-list [aria-selected="true"] {
+    background-color: #ddd;
+    color: #000000;
+    font-weight: bold;
+    border: 0.5px solid #000000;
+  }  
+  .state-list{
+    padding: 5px;
+  }
+
+  /* aria-activedescendant */
+  .listbox-item[aria-selected="true"] {
+    background-color: #ddd;
+    color: #000000;
+    font-weight: bold;
+    border: 0.5px solid #000000;
+  }
+  .listbox-item{
+    padding: 5px;
+  }
+
+  /* aria-activedescendant with multiselected */
+  .listbox-itemM[aria-selected="true"] {
+    background-color: #ddd;
+    color: #000000;
+    font-weight: bold;
+    border: 0.5px solid #000000;
+    }
+    .listbox-itemM {
+        padding: 5px;
+    }
+
+</style>
+</head>
+<body>
+<div>
+  <h1><span><b> Listbox Example </b></span></h1>
+  <!-- Roving TabIndex -->
+    <div class="roving-tabindex">
+        <h2>Listbox roving tabindex example</h2>
+        <h3><label for="state-list" id="state">India's State: </label></h3>
+        <div class="state-list" aria-labelledby="state" role="listbox">    
+            <div role="option" aria-selected="true" tabindex="0">Arunachal Pradesh</div>
+            <div role="option" aria-selected="false" tabindex="-1">Andhra Pradesh</div>
+            <div role="option" aria-selected="false" tabindex="-1">Himachal Pradesh</div>
+            <div role="option" aria-selected="false" tabindex="-1">Maharashtra</div>
+            <div role="option" aria-selected="false" tabindex="-1">Karnataka</div>
+            <div role="option" aria-selected="false" tabindex="-1">Uttarakhand</div>
+            <div role="option" aria-selected="false" tabindex="-1">Uttar Pradesh</div>
+        </div>
+        </div>
+    </div>
+
+  <!-- aria-activedescendant -->
+    <div class="aria-activedescendant">
+        <h2>listbox aria-activedescendant example</h2>
+        <div class="main content">
+        <h3><label for="listbox">India's States: </label></h3>
+        <div class="listbox" role="listbox" aria-label="India's state" aria-activedescendant="">
+            <div id="state1" class="listbox-item" role="option" aria-selected="true">Arunachal Pradesh</div>
+            <div id="state2" class="listbox-item" role="option">Andhra Pradesh</div>
+            <div id="state3" class="listbox-item" role="option">Himachal Pradesh</div>
+            <div id="state4" class="listbox-item" role="option">Maharashtra</div>
+            <div id="state5" class="listbox-item" role="option">Karnataka</div>
+            <div id="state6" class="listbox-item" role="option">Uttarakhand</div>
+            <div id="state7" class="listbox-item" role="option">Uttar Pradesh</div>
+        </div>
+        </div>
+    </div>
+
+  <!-- activedescendant Multiselect -->
+    <div class="multiselected">
+        <h2>Listbox aria-activedescendant multiselected example</h2>
+        <div class="main-content">
+            <h3><label for="listbox">Add Users: </label></h3>
+            <div class="listboxM" role="listbox-M" aria-label="Add User" aria-activedescendant="" tabindex="0">
+                <div id="state11" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Rahul.B</div>  
+                <div id="state12" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1"> Suraj.P</div>
+                <div id="state13" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Anant.P</div>
+                <div id="state14" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Gaurav.A</div>
+                <div id="state15" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Madhav.S</div>
+                <div id="state16" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Himanshu.J</div>
+                <div id="state17" class="listbox-itemM" role="option" aria-selected="false" tabindex="-1">Krushna.K</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="Listbox.js" ></script>
+</body>
+</html>
