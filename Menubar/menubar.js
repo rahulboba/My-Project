@@ -17,7 +17,20 @@ function handleNavigation(event) {
           submenuLinks[0].focus();
         }
       }
-    } else if (key === 'ArrowRight') {
+    }
+    else if(key === 'ArrowUp') {
+        if (submenu && submenu.style.display !== 'block') {
+          event.preventDefault();
+          closeSubmenus();
+          submenu.style.display = 'block';
+          const submenuLinks = submenu.querySelectorAll('a');
+          if (submenuLinks.length > 0) {
+            submenuLinks[2].focus();
+          }
+        }
+      }
+    
+    else if (key === 'ArrowRight') {
       event.preventDefault();
       const nextItem = parentItem.nextElementSibling;
       const nextLink = nextItem.querySelector('a');

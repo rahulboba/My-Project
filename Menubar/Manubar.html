@@ -82,30 +82,34 @@ header {
   </header>
   <nav>
     <div class="menubar" id="menubar">
-        <ul>
-            <li>
-                <a role="menuitem" href="#home">Home</a>
-            </li>
+            <div role="menu">
+                <a role="menuitem" aria-label="home" href="#home">Home</a>
+            </div>
     
-            <li>
-                <a role="menuitem" href="#overview">Overview</a>
+            <div role="menu">
+                <a role="menuitem" aria-label="Overview" href="#overview">Overview</a>
                 <div class="submenu">
-                    <a class="submenuitem1" role="menuitem" href="#meetingroom">Meeting Room</a>
-                    <a class="submenuitem2" role="menuitem" href="#mainhall">Main Hall</a>
-                    <a class="submenuitem3" role="menuitem" href="#cabin">Cabin</a>
+                    <a class="submenuitem1" aria-label="meeting room" role="menuitem" href="#meetingroom">Meeting Room</a>
+                    <a class="submenuitem2" aria-label="main hall" role="menuitem" href="#mainhall">Main Hall</a>
+                    <a class="submenuitem3" aria-label="cabin" role="menuitem" href="#cabin">Cabin</a>
                 </div>
-            </li>
-            <li>
-                <a role="menuitem" href="#aboutus">About Us</a>
+            </div>
+            <div role="menu">
+                <a role="menuitem" aria-label="about us" href="#aboutus">About Us</a>
                 <div class="submenu">
-                    <a class="submenuitems" role="menuitem" href="#team">Our Team</a>
-                    <a class="submenuitems" role="menuitem" href="#mission">Our Mission</a>
-                    <a class="submenuitems3" role="menuitem" href="#vision">Our Vision</a>
+                    <a class="submenuitems"  aria-label="" role="menuitem" href="#team">Our Team</a>
+                    <a class="submenuitems"  aria-label="" role="menuitem" href="#mission">Our Mission</a>
+                    <a class="submenuitems3" aria-label="" role="menuitem" href="#vision">Our Vision</a>      
                 </div>
-            </li>
-        </ul>
+            </div>
     </div>
   </nav>      
-  <script src="menubar.js"></script>
+    <div class="home">
+        <h1>Top Navigation Menubar Example</h1>
+        <h3> Hello We'r Tekvisians:)</h3>
+        <span>Let's figure out</span>
+    </div>
+
+<script src="menubar.js"></script>
 </body>
 </html>
