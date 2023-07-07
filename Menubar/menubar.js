@@ -1,59 +1,59 @@
+document.addEventListener('keydown', handleNavigation);
+document.addEventListener('keydown', handleSubmenuNavigation);
 
-document.addEventListener('keydown', handleNavigation, handleSubmenuNavigation);
 // Function to handle keyboard navigation
 function handleNavigation(event) {
-    const key = event.key;
-    const currentLink = event.target;
-    const parentItem = currentLink.parentNode;
-    const submenu = parentItem.querySelector('.submenu');
-  
-    if (key === 'ArrowDown') {
-      if (submenu && submenu.style.display !== 'block') {
-        event.preventDefault();
-        closeSubmenus();
-        submenu.style.display = 'block';
-        const submenuLinks = submenu.querySelectorAll('a');
-        if (submenuLinks.length > 0) {
-          submenuLinks[0].focus();
-        }
-      }
-    }
-    else if(key === 'ArrowUp') {
-        if (submenu && submenu.style.display !== 'block') {
-          event.preventDefault();
-          closeSubmenus();
-          submenu.style.display = 'block';
-          const submenuLinks = submenu.querySelectorAll('a');
-          if (submenuLinks.length > 0) {
-            submenuLinks[2].focus();
-          }
-        }
-      }
-    
-    else if (key === 'ArrowRight') {
-      event.preventDefault();
-      const nextItem = parentItem.nextElementSibling;
-      const nextLink = nextItem.querySelector('a');
-      if (nextItem) {
-        nextLink.focus();
-      }
-    } else if (key === 'ArrowLeft') {
-      event.preventDefault();
-      const prevItem = parentItem.previousElementSibling;
-      const prevLink = prevItem.querySelector('a');
-      if (prevItem) {
-        prevLink.focus();
-      }
-    } else if (key === 'Escape') {
+  const key = event.key;
+  const currentLink = event.target;
+  const parentItem = currentLink.parentNode;
+  const submenu = parentItem.querySelector('.submenu');
+
+  if (key === 'ArrowDown') {
+    if (submenu) {
       event.preventDefault();
       closeSubmenus();
-      const prevItem = parentItem.previousElementSibling;
-      if (prevItem) {
-        prevItem.focus();
-      }else {
-        document.querySelector('.menubar a');
+      submenu.style.display = 'block';
+      submenu.setAttribute('aria-expanded', 'true');
+      const submenuLinks = submenu.querySelectorAll('a');
+      if (submenuLinks.length > 0) {
+        submenuLinks[0].focus();
       }
     }
+  } else if (key === 'ArrowUp') {
+    if (submenu && submenu.style.display !== 'block') {
+      event.preventDefault();
+      closeSubmenus();
+      submenu.style.display = 'block';
+      submenu.setAttribute('aria-expanded', 'true');
+      const submenuLinks = submenu.querySelectorAll('a');
+      if (submenuLinks.length > 0) {
+        submenuLinks[submenuLinks.length - 1].focus();
+      }
+    }
+  } else if (key === 'ArrowRight') {
+    event.preventDefault();
+    const nextItem = parentItem.nextElementSibling;
+    const nextLink = nextItem.querySelector('a');
+    if (nextItem) {
+      nextLink.focus();
+    }
+  } else if (key === 'ArrowLeft') {
+    event.preventDefault();
+    const prevItem = parentItem.previousElementSibling;
+    const prevLink = prevItem.querySelector('a');
+    if (prevItem) {
+      prevLink.focus();
+    }
+  } else if (key === 'Escape') {
+    event.preventDefault();
+    closeSubmenus();
+    const prevItem = parentItem.previousElementSibling;
+    if (prevItem) {
+      prevItem.focus();
+    } else {
+      document.querySelector('.menubar a').focus();
+    }
+  }
 }
 
 // Function to handle submenu navigation
@@ -62,7 +62,7 @@ function handleSubmenuNavigation(event) {
   const currentLink = event.target;
   const parentItem = currentLink.parentNode.parentNode;
   const submenu = parentItem.querySelector('.submenu');
-  
+
   if (key === 'ArrowDown') {
     event.preventDefault();
     const nextLink = currentLink.nextElementSibling;
@@ -73,6 +73,7 @@ function handleSubmenuNavigation(event) {
       if (firstLink) {
         firstLink.focus();
       }
+      submenu.setAttribute('aria-expanded', 'true');
     }
   } else if (key === 'ArrowUp') {
     event.preventDefault();
@@ -80,28 +81,27 @@ function handleSubmenuNavigation(event) {
     if (prevLink) {
       prevLink.focus();
     } else {
-        document.querySelector('.submenuitem3').focus();
-        document.querySelector('.submenuitems3').focus();
+      document.querySelector('.submenuitem3').focus();
+      document.querySelector('.submenuitems3').focus();
     }
-  }
-  // when we press right arrow it will goes to next 'menubar' element
-  else if (key === 'ArrowRight') {
+  } else if (key === 'ArrowRight') {
     event.preventDefault();
     const nextItem = parentItem.nextElementSibling;
     const nextLink = nextItem.querySelector('a');
     if (nextItem) {
       nextLink.focus();
     }
-    submenu.style.display= 'none';
-  } 
-  else if (key === 'ArrowLeft') {
+    submenu.style.display = 'none';
+    submenu.setAttribute('aria-expanded', 'false');
+  } else if (key === 'ArrowLeft') {
     event.preventDefault();
     const prevItem = parentItem.previousElementSibling;
     const prevLink = prevItem.querySelector('a');
     if (prevItem) {
       prevLink.focus();
     }
-    submenu.style.display= 'none';
+    submenu.style.display = 'none';
+    submenu.setAttribute('aria-expanded', 'false');
   }
 }
 
@@ -109,18 +109,20 @@ function handleSubmenuNavigation(event) {
 function closeSubmenus() {
   const submenus = document.querySelectorAll('.submenu');
   submenus.forEach((submenu) => {
-    submenu.style.display = 'none';    
+    submenu.style.display = 'none';
+    submenu.setAttribute('aria-expanded', 'false');
   });
 }
 
 // Attach event listeners to menu items
-const menuItems = document.querySelectorAll('.menubar a');
+const menuItems = document.querySelectorAll('.menubar a[role="menuitem"]');
 menuItems.forEach((item) => {
   item.addEventListener('keydown', handleNavigation);
 });
 
 // Attach event listeners to submenu items
-const submenuItems = document.querySelectorAll('.submenu a');
+const submenuItems = document.querySelectorAll('.submenu a[role="menuitem"]');
 submenuItems.forEach((item) => {
   item.addEventListener('keydown', handleSubmenuNavigation);
 });
+
