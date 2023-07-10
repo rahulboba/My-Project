@@ -8,8 +8,8 @@ function handleNavigation(event) {
   const parentItem = currentLink.parentNode;
   const submenu = parentItem.querySelector('.submenu');
 
-  if (key === 'ArrowDown') {
-    if (submenu) {
+  if (key === 'ArrowDown' || key === 'Enter' || key === ' ') {
+    
       event.preventDefault();
       closeSubmenus();
       submenu.style.display = 'block';
@@ -19,7 +19,7 @@ function handleNavigation(event) {
         submenuLinks[0].focus();
       }
     }
-  } else if (key === 'ArrowUp') {
+    else if (key === 'ArrowUp') {
     if (submenu && submenu.style.display !== 'block') {
       event.preventDefault();
       closeSubmenus();
@@ -63,7 +63,7 @@ function handleSubmenuNavigation(event) {
   const parentItem = currentLink.parentNode.parentNode;
   const submenu = parentItem.querySelector('.submenu');
 
-  if (key === 'ArrowDown') {
+  if (key === 'ArrowDown' || key === 'Enter' || key === ' ') {
     event.preventDefault();
     const nextLink = currentLink.nextElementSibling;
     if (nextLink) {
@@ -125,4 +125,3 @@ const submenuItems = document.querySelectorAll('.submenu a[role="menuitem"]');
 submenuItems.forEach((item) => {
   item.addEventListener('keydown', handleSubmenuNavigation);
 });
-
