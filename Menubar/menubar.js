@@ -9,7 +9,7 @@ function handleNavigation(event) {
   const submenu = parentItem.querySelector('.submenu');
 
   if (key === 'ArrowDown' || key === 'Enter' || key === ' ') {
-    
+        if (submenu){
       event.preventDefault();
       closeSubmenus();
       submenu.style.display = 'block';
@@ -19,6 +19,7 @@ function handleNavigation(event) {
         submenuLinks[0].focus();
       }
     }
+}
     else if (key === 'ArrowUp') {
     if (submenu && submenu.style.display !== 'block') {
       event.preventDefault();
