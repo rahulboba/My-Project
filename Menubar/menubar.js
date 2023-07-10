@@ -9,7 +9,7 @@ function handleNavigation(event) {
   const submenu = parentItem.querySelector('.submenu');
 
   if (key === 'ArrowDown' || key === 'Enter' || key === ' ') {
-        if (submenu){
+    if (submenu) {
       event.preventDefault();
       closeSubmenus();
       submenu.style.display = 'block';
@@ -19,8 +19,7 @@ function handleNavigation(event) {
         submenuLinks[0].focus();
       }
     }
-}
-    else if (key === 'ArrowUp') {
+  } else if (key === 'ArrowUp') {
     if (submenu && submenu.style.display !== 'block') {
       event.preventDefault();
       closeSubmenus();
@@ -64,27 +63,25 @@ function handleSubmenuNavigation(event) {
   const parentItem = currentLink.parentNode.parentNode;
   const submenu = parentItem.querySelector('.submenu');
 
-  if (key === 'ArrowDown' || key === 'Enter' || key === ' ') {
+  if (key === 'ArrowDown' || key === 'ArrowUp') {
     event.preventDefault();
-    const nextLink = currentLink.nextElementSibling;
-    if (nextLink) {
-      nextLink.focus();
-    } else {
-      const firstLink = submenu.querySelector('a');
-      if (firstLink) {
-        firstLink.focus();
+    const submenuLinks = submenu.querySelectorAll('a');
+    const currentLinkIndex = Array.from(submenuLinks).indexOf(currentLink);
+    let nextIndex;
+
+    if (key === 'ArrowDown') {
+      nextIndex = currentLinkIndex + 1;
+      if (nextIndex >= submenuLinks.length) {
+        nextIndex = 0;
       }
-      submenu.setAttribute('aria-expanded', 'true');
+    } else if (key === 'ArrowUp') {
+      nextIndex = currentLinkIndex - 1;
+      if (nextIndex < 0) {
+        nextIndex = submenuLinks.length - 1;
+      }
     }
-  } else if (key === 'ArrowUp') {
-    event.preventDefault();
-    const prevLink = currentLink.previousElementSibling;
-    if (prevLink) {
-      prevLink.focus();
-    } else {
-      document.querySelector('.submenuitem3').focus();
-      document.querySelector('.submenuitems3').focus();
-    }
+
+    submenuLinks[nextIndex].focus();
   } else if (key === 'ArrowRight') {
     event.preventDefault();
     const nextItem = parentItem.nextElementSibling;
