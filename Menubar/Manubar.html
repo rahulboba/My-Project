@@ -9,44 +9,36 @@ body, h1, nav, ul, li {
   padding: 0;
   list-style: none;
 }
-
 /* Header style */
 header {
   background-color: #333;
   color: #fff;
   padding: 10px;
 }
-
 /* Menubar style */
 .menubar {
   display: flex;
   background-color: #f0f0f0;
   padding: 10px;
 }
-
 .menubar ul {
   display: flex;
 }
-
 .menubar li {
   margin-right: 10px;
 }
-
 .menubar a {
   text-decoration: none;
   color: #333;
   padding: 5px 10px;
 }
-
 .menubar a:hover {
   background-color: #ddd;
 }
-
 .menubar a:focus {
   outline: none;
   background-color: #ccc;
 }
-
 /* Submenu style */
 .submenu {
   display: none;
@@ -54,26 +46,27 @@ header {
   padding: 10px;
   position: relative;
 }
-
 .submenu a {
   text-decoration: none;
   color: #333;
   padding: 5px 10px;
   display: block;
 }
-
 .submenu a:hover {
   background-color: #ddd;
 }
-
 .submenu a:focus {
   outline: none;
   background-color: #ccc;
 }
 .menubar li:focus .submenu,
-.menubar li:hover .submenu {
+.menubar li:hover .submenu{
     display: block;
     }
+.subitem li{
+  display: inline-block;
+}
+
 </style>
 </head>
 <body>
@@ -84,8 +77,7 @@ header {
     <div class="menubar" id="menubar" role="menubar">
       <div>
         <a role="menuitem" aria-label="home" href="#home" tabindex="0">Home</a>
-      </div>
-  
+      </div> 
       <div>
         <a role="menuitem" aria-label="Overview" id="Tlink1" href="#overview" tabindex="-1" aria-expanded="false" aria-haspopup="true" ">Overview</a>
         <div class="submenu" role="menu" id="navbar" aria-expanded="false">
@@ -97,167 +89,28 @@ header {
       <div>
         <a role="menuitem" aria-label="About Us" id="Tlink2" href="#aboutus" tabindex="-1" aria-expanded="false" aria-haspopup="true">About Us</a>
         <div class="submenu" role="menu" aria-expanded="false">
-          <a class="submenuitems" aria-label="" role="menuitem" href="#team" tabindex="-1">Our Team</a>
-          <a class="submenuitems" aria-label="" role="menuitem" href="#mission" tabindex="-1">Our Mission</a>
-          <a class="submenuitems3" aria-label="" role="menuitem" href="#vision" tabindex="-1">Our Vision</a>
-        </div>
+          <a class="submenuitems" aria-label="Our Team" role="menuitem" href="#team" tabindex="-1">Our Team</a>
+          <a class="submenuitems" aria-label="Our Mission" role="menuitem" href="#mission" tabindex="-1">Our Mission</a>
+          
+          <li><a class="submenuitems3" aria-label="Our Vision" role="menuitem" href="#vision" tabindex="-1">Our Vision</a></li>
+          <ul class="subitem">
+            <li><a class="submenuitem" aria-label="" role="menuitem" href="#" tabindex="-1">Top</a></li>
+            <li><a class="submenuitem" aria-label="" role="menuitem" href="#" tabindex="-1">Up</a></li>
+            <li><a class="submenuitem" aria-label="" role="menuitem" href="#" tabindex="-1">Clear</a></li>
+          </ul>
+        
       </div>
     </div>
+    </div>
   </nav>
-  
-        
+
+     
     <div class="home">
         <h1>Top Navigation Menubar Example</h1>
         <h3> Hello We'r Tekvisians:)</h3>
         <span>Let's figure out</span>
     </div>
-
 <script src="menubar.js">
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Menubar</title>
-<style>
-    /* Reset some default styles for consistency */
-body, h1, nav, ul, li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Header style */
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-}
-
-/* Menubar style */
-.menubar {
-  display: flex;
-  background-color: #f0f0f0;
-  padding: 10px;
-}
-
-.menubar ul {
-  display: flex;
-}
-
-.menubar li {
-  margin-right: 10px;
-}
-
-.menubar a {
-  text-decoration: none;
-  color: #333;
-  padding: 5px 10px;
-}
-
-.menubar a:hover {
-  background-color: #ddd;
-}
-
-.menubar a:focus {
-  outline: none;
-  background-color: #ccc;
-}
-
-/* Submenu style */
-.submenu {
-  display: none;
-  background-color: #f0f0f0;
-  padding: 10px;
-  position: relative;
-}
-
-.submenu a {
-  text-decoration: none;
-  color: #333;
-  padding: 5px 10px;
-  display: block;
-}
-
-.submenu a:hover {
-  background-color: #ddd;
-}
-
-.submenu a:focus {
-  outline: none;
-  background-color: #ccc;
-}
-
-.visually-hidden {
-  position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0 !important;
-  border: 0 !important;
-  height: 1px !important;
-  width: 1px !important;
-  overflow: hidden;
-}
-</style>
-</head>
-<body>
-  <header>
-    <h1>MenuBar Example</h1>
-  </header>
-  <nav>
-    <div class="menubar" id="menubar" role="menubar">
-      <div>
-        <a role="menuitem" aria-label="home" href="#home" tabindex="0">Home</a>
-      </div>
-  
-      <div>
-        <a role="menuitem" aria-label="Overview" id="Tlink1" href="#overview" tabindex="-1" aria-expanded="false" aria-haspopup="true" ">Overview</a> -->
-        <!-- <div class="submenu" role="menu" id="navbar" aria-expanded="false">
-          <a class="submenuitem1" aria-label="meeting room" role="menuitem" href="#meetingroom" tabindex="-1">Meeting Room</a>
-          <a class="submenuitem2" aria-label="main hall" role="menuitem" href="#mainhall" tabindex="-1">Main Hall</a>
-          <a class="submenuitem3" aria-label="cabin" role="menuitem" href="#cabin" tabindex="-1">Cabin</a>
-        </div>
-      </div>
-      <div>
-        <a role="menuitem" aria-label="" href="#aboutus" tabindex="-1" aria-expanded="false" aria-haspopup="true">About Us</a>
-        <div class="submenu" role="menu" aria-expanded="false">
-          <a class="submenuitems" aria-label="" role="menuitem" href="#team" tabindex="-1">Our Team</a>
-          <a class="submenuitems" aria-label="" role="menuitem" href="#mission" tabindex="-1">Our Mission</a>
-          <a class="submenuitems3" aria-label="" role="menuitem" href="#vision" tabindex="-1">Our Vision</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-  
-        
-    <div class="home">
-        <h1>Top Navigation Menubar Example</h1>
-        <h3> Hello We're Tekvisians:)</h3>
-        <span>Let's figure out</span>
-    </div>
-
-<script src="menubar.js"></script>
-
-Live region for screen reader announcements
-<div id="live-region" class="visually-hidden" aria-live="assertive"></div>
-
-</body>
-</html> -->
-
-
-
-
-
-
-
-
-

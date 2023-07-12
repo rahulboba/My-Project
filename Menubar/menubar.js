@@ -78,11 +78,13 @@ function handleSubmenuNavigation(event) {
       nextIndex = currentLinkIndex - 1;
       if (nextIndex < 0) {
         nextIndex = submenuLinks.length - 1;
+        nextIndex.focus();
       }
     }
-
     submenuLinks[nextIndex].focus();
-  } else if (key === 'ArrowRight') {
+    
+    } 
+    else if (key === 'ArrowRight') {
     event.preventDefault();
     const nextItem = parentItem.nextElementSibling;
     const nextLink = nextItem.querySelector('a');
@@ -91,7 +93,8 @@ function handleSubmenuNavigation(event) {
     }
     submenu.style.display = 'none';
     submenu.setAttribute('aria-expanded', 'false');
-  } else if (key === 'ArrowLeft') {
+    } 
+    else if (key === 'ArrowLeft') {
     event.preventDefault();
     const prevItem = parentItem.previousElementSibling;
     const prevLink = prevItem.querySelector('a');
