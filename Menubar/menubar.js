@@ -106,6 +106,8 @@ function handleSubmenuNavigation(event) {
   }
 }
 
+
+
 // Function to close all submenus
 function closeSubmenus() {
   const submenus = document.querySelectorAll('.submenu');
