@@ -8,7 +8,7 @@ body, h1, nav, ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
-}
+} -->
 /* Header style */
 header {
   background-color: #333;
@@ -66,7 +66,9 @@ header {
 .subitem li{
   display: inline-block;
 }
-
+/* .menu li{
+  display: none;
+} */
 </style>
 </head>
 <body>
@@ -81,26 +83,25 @@ header {
       <div>
         <a role="menuitem" aria-label="Overview" id="Tlink1" href="#overview" tabindex="-1" aria-expanded="false" aria-haspopup="true" ">Overview</a>
         <div class="submenu" role="menu" id="navbar" aria-expanded="false">
-          <a class="submenuitem1" aria-label="meeting room" role="menuitem" href="#meetingroom" tabindex="-1">Meeting Room</a>
-          <a class="submenuitem2" aria-label="main hall" role="menuitem" href="#mainhall" tabindex="-1">Main Hall</a>
-          <a class="submenuitem3" aria-label="cabin" role="menuitem" href="#cabin" tabindex="-1">Cabin</a>
+          <a class="submenuitem" aria-label="meeting room" role="menuitem" href="#meetingroom" tabindex="-1">Meeting Room</a>
+          <a class="submenuitem" aria-label="main hall" role="menuitem" href="#mainhall" tabindex="-1">Main Hall</a>
+          <a class="submenuitem" aria-label="cabin" role="menuitem" href="#cabin" tabindex="-1">Cabin</a>
         </div>
       </div>
       <div>
         <a role="menuitem" aria-label="About Us" id="Tlink2" href="#aboutus" tabindex="-1" aria-expanded="false" aria-haspopup="true">About Us</a>
-        <div class="submenu" role="menu" aria-expanded="false">
-          <a class="submenuitems" aria-label="Our Team" role="menuitem" href="#team" tabindex="-1">Our Team</a>
-          <a class="submenuitems" aria-label="Our Mission" role="menuitem" href="#mission" tabindex="-1">Our Mission</a>
-          <a class="submenuitems3" aria-label="Our Vision" role="menuitem" href="#vision" tabindex="-1">Our Vision</a>
+        <div class="submenu" role="menu" id="navbar" aria-expanded="false">
+          <a class="submenuitem" aria-label="Our Team" role="menuitem" href="#team" tabindex="-1">Our Team</a>
+          <a class="submenuitem" aria-label="Our Mission" role="menuitem" href="#mission" tabindex="-1">Our Mission</a>
+          <a class="submenuitem" aria-label="Our Vision" role="menuitem" href="#vision" tabindex="-1">Our Vision</a>
         </div>  
-          <div class="menubar">
-          <ul>
-            <li><a class="submenuitem" aria-label="Top" role="menu" href="#" tabindex="-1">Top</a></li>
-            <li><a class="submenuitem" aria-label="Up" role="menu" href="#" tabindex="-1">Up</a></li>
-            <li><a class="submenuitem" aria-label="Clear" role="menu" href="#" tabindex="-1">Clear</a></li>
+        <div>
+          <ul role="menu"  class="menu">
+            <li><a class="submenuitems" aria-label="Top" role="menuitem" href="#" tabindex="-1">Top</a></li>
+            <li><a class="submenuitems" aria-label="Up" role="menuitem" href="#" tabindex="-1">Up</a></li>
+            <li><a class="submenuitems" aria-label="Clear" role="menuitem" href="#" tabindex="-1">Clear</a></li>
           </ul>
-          </div>
-      
+        </div>
     </div>
     </div>
   </nav>

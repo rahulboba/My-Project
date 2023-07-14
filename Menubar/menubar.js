@@ -1,5 +1,6 @@
 document.addEventListener('keydown', handleNavigation);
 document.addEventListener('keydown', handleSubmenuNavigation);
+// document.addEventListener('keydown', handleSubNavigation);
 
 // Function to handle keyboard navigation
 function handleNavigation(event) {
@@ -45,16 +46,14 @@ function handleNavigation(event) {
       prevLink.focus();
     }
   } else if (key === 'Escape') {
-    event.preventDefault();
-    closeSubmenus();
+    closeSubmenu();
     const prevItem = parentItem.previousElementSibling;
     if (prevItem) {
       prevItem.focus();
     } else {
       document.querySelector('.menubar a').focus();
     }
-  }
-}
+}}
 
 // Function to handle submenu navigation
 function handleSubmenuNavigation(event) {
@@ -62,13 +61,12 @@ function handleSubmenuNavigation(event) {
   const currentLink = event.target;
   const parentItem = currentLink.parentNode.parentNode;
   const submenu = parentItem.querySelector('.submenu');
-
   if (key === 'ArrowDown' || key === 'ArrowUp') {
     event.preventDefault();
     const submenuLinks = submenu.querySelectorAll('a');
     const currentLinkIndex = Array.from(submenuLinks).indexOf(currentLink);
     let nextIndex;
-
+    
     if (key === 'ArrowDown') {
       nextIndex = currentLinkIndex + 1;
       if (nextIndex >= submenuLinks.length) {
@@ -83,14 +81,31 @@ function handleSubmenuNavigation(event) {
     }
     submenuLinks[nextIndex].focus();
     
-    } 
-    else if (key === 'ArrowRight') {
+  } 
+  else if (key === 'ArrowRight') {
+    console.log("arraowRight")
     event.preventDefault();
+    const menu = parentItem.querySelector('.menu');
     const nextItem = parentItem.nextElementSibling;
     const nextLink = nextItem.querySelector('a');
     if (nextItem) {
       nextLink.focus();
     }
+    if (key === 'ArrowRight') {
+      event.preventDefault();
+      const submenuLinks = menu.querySelectorAll('a');
+      const currentLinkIndex = Array.from(submenuLinks).indexOf(currentLink);
+      let nextIndex;
+  
+      if (key === 'ArrowRight') {
+        nextIndex = currentLinkIndex + 1;
+        if (nextIndex >= submenuLinks.length) {
+          nextIndex = 0;
+        }
+        menu.style.display = 'block';
+      }
+      submenuLinks[nextIndex].focus();    
+      } 
     submenu.style.display = 'none';
     submenu.setAttribute('aria-expanded', 'false');
     } 
@@ -108,6 +123,7 @@ function handleSubmenuNavigation(event) {
 
 
 
+
 // Function to close all submenus
 function closeSubmenus() {
   const submenus = document.querySelectorAll('.submenu');
@@ -115,6 +131,27 @@ function closeSubmenus() {
     submenu.style.display = 'none';
     submenu.setAttribute('aria-expanded', 'false');
   });
+}
+
+function closeSubmenu() {
+  const submenus = document.querySelectorAll('.menu');
+  submenus.forEach((submenu) => {
+    if(submenu){
+    submenu.style.display = 'none';
+    submenu.setAttribute('aria-expanded', 'false');
+}
+// function openSubmenu() {
+//   const submenus = document.querySelectorAll('.menu');
+//   submenus.forEach((submenu) => {
+//     if(submenu){
+//     submenu.style.display = 'block';
+   
+//     }})}
+
+// else if ('ArrowRight'){
+//   submenu.style.display = 'none';
+// }
+});
 }
 
 // Attach event listeners to menu items
